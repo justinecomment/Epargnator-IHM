@@ -1,0 +1,18 @@
+<div class="content">
+    <p>add book</p>
+    
+    <form name="addBookForm" ng-submit="submitAddBook()" novalidate>
+       <div class="textField">
+            <lx-text-field lx-label="Titre" lx-focus="true">
+                <input type="text" ng-model="title" id="title" required>
+            </lx-text-field>
+            <span ng-if="addBookForm.$submitted" ng-show="addBookForm.$valid == false" class="error">Le Titre est requis</span><br>
+
+       </div>
+        <lx-button lx-type="raised" type="submit">Ajouter</lx-button>
+         <a href="#/projets">
+            <lx-button lx-type="raised" >Cancel</lx-button>
+            </a>
+  </form>
+
+</div>
