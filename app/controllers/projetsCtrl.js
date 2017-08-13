@@ -1,17 +1,37 @@
-myApp.controller('projetsCtrl', function($scope) {
+myApp.controller('projetsCtrl', function($scope, $compile) {
+        
+    $scope.listeComposants = [];
+    $scope.listeProjets = [];
+
     
     $scope.submitAddProjet = function(){
         if($scope.addProjetForm.$valid === true){
-            var formData = {
+            var dataProjet = {
                 'projet': document.getElementById("nom").value,
-                'date': this.vm.datePicker.input.date,
+                'date': this.vm.datePicker.input.date
             }
-            console.log(formData);
-            //  $("#categorie").append("<li> <div class='chip mr'> <span class='chip__label'>" + categorieRecovered + "</span> </div> </li>");
-
+             $scope.listeProjets.push(dataProjet);
         }
         else{
             console.log('invalid');
         }
-    }
+   };
+
+
+    $scope.onClickAddComposant = function(){
+           var dataComposant = {
+                'nomComposant': this.nomComposant,
+                'montant': this.montant
+            };
+
+            $scope.listeComposants.push(dataComposant);
+            $('#idComposant').val('');
+            $('#idMontant').val('');
+    };
+   
+   $scope.onClickDeleteComposant = function(index){
+        $scope.listeComposants.splice(index, 1);
+   }; 
+   
+
 });

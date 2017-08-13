@@ -23,10 +23,13 @@ html, body {
 
 .card{
     margin: 0 auto;
-    width: 600px;
+    width: 700px;
 }
 .paragraph input{
-    display: block;
     margin: 0 auto;
     margin-top: 10px;
+}
+.fa-plus, .fa-trash-o ,.fa-pencil{
+    padding-left: 30px;
+    cursor: pointer;
 }

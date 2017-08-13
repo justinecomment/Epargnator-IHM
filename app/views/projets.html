@@ -1,6 +1,3 @@
-
-
-
 <div class="content">
     <p>Ajouter un Projet</p>
 
@@ -27,25 +24,34 @@
         </lx-button>
     </form>
 
-    <div class="p+">
+
+    <div class="p+" ng-repeat="listeProjet in listeProjets">
         <div class="card">
             <div class="p+">
-                <strong class="fs-headline display-block">Bali</strong>
-    
-                <div class="paragraph fs-body-1 mt+">
-                    <input type="text" placeholder="Nom de mon composant"/>
-                    <input type="text" placeholder="Montant"/>
-                    <input type="text" placeholder="Importance"/>
+                <strong class="fs-headline display-block">{{listeProjet.projet}}</strong>
+                
+                <form name="composantForm" ng-submit="onClickAddComposant()">
+                    <div class="paragraph fs-body-1 mt+">
+                    <input type="text" ng-model="nomComposant" id="idComposant" placeholder="Nom de mon composant"/>
+                    <input type="text" ng-model="montant" id="idMontant" placeholder="Montant"/>
+            
+                    <lx-button lx-type="icon" type="submit" lx-size="l">
+                        <i class="mdi mdi-plus"></i>
+                    </lx-button>
+                </form>
+
+                <div ng-repeat="myComposant in listeComposants">
+                    <input type="text" value={{myComposant.nomComposant}} />
+                    <input type="text" value={{myComposant.montant}} />
+                    <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
                 </div>
             </div>
     
             <div class="card__actions">
                 <lx-button lx-color="green" lx-type="flat">Save</lx-button>
-                <lx-button lx-color="orange" lx-type="flat">Edit</lx-button>
                 <lx-button lx-color="red" lx-type="flat">Delete</lx-button>
             </div>
         </div>
     </div>
-
-
+  
 </div>
