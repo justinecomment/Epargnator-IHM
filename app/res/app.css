@@ -8,12 +8,6 @@ html, body {
     margin: 0 auto;
 }
 
-.btnAddProjet{
-    right:200px;
-    position:relative;
-    float:right;
-}
-
 .textField{
     width: 200px;
     margin: 0 auto;
@@ -21,4 +15,18 @@ html, body {
 
 .error{
     color: red;
+}
+
+.lx-date-input{
+    margin-top: -22px;
+}
+
+.card{
+    margin: 0 auto;
+    width: 600px;
+}
+.paragraph input{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
 }

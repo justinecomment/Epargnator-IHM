@@ -1,10 +1,51 @@
- <a href="#/addProjet">
-    <lx-button lx-type="fab" lx-size="xl" class="btnAddProjet">
-        <i class="mdi mdi-plus"></i>
-    </lx-button>
- </a>
+
+
 
 <div class="content">
-    <p>Mes Projets</p>
+    <p>Ajouter un Projet</p>
+
+     <form name="addProjetForm" ng-submit="submitAddProjet()" novalidate>
+       <div class="textField">
+            <lx-text-field lx-label="Nom" lx-focus="true">
+                <input type="text" ng-model="nom" id="nom" name="nom" required>
+            </lx-text-field>
+            <span ng-if="addProjetForm.$submitted" ng-show="addProjetForm.nom.$pristine || addProjetForm.nom.$error.required" class="error">Le Nom est requis</span><br>
+            
+            <lx-date-picker ng-model="vm.datePicker.input.date"
+                    lx-input-format="LL"
+                    lx-locale="{{ vm.locale }}"
+                    id="datePicker">
+                <lx-text-field lx-allow-clear="true" lx-label="Choisissez une date">
+                    <input type="text" ng-model="vm.datePicker.input.dateFormatted" name="datePicker" required>
+                </lx-text-field>
+            </lx-date-picker>
+            <span ng-if="addProjetForm.$submitted" ng-show="addProjetForm.datePicker.$pristine || addProjetForm.datePicker.$error.required" class="error">La date est requise</span><br>
+       </div>
+        
+        <lx-button lx-type="fab" type="submit" lx-size="l">
+            <i class="mdi mdi-plus"></i>
+        </lx-button>
+    </form>
+
+    <div class="p+">
+        <div class="card">
+            <div class="p+">
+                <strong class="fs-headline display-block">Bali</strong>
+    
+                <div class="paragraph fs-body-1 mt+">
+                    <input type="text" placeholder="Nom de mon composant"/>
+                    <input type="text" placeholder="Montant"/>
+                    <input type="text" placeholder="Importance"/>
+                </div>
+            </div>
+    
+            <div class="card__actions">
+                <lx-button lx-color="green" lx-type="flat">Save</lx-button>
+                <lx-button lx-color="orange" lx-type="flat">Edit</lx-button>
+                <lx-button lx-color="red" lx-type="flat">Delete</lx-button>
+            </div>
+        </div>
+    </div>
+
 
 </div>

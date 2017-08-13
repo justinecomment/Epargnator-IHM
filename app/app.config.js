@@ -8,10 +8,6 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     controller: 'projetsCtrl',
     templateUrl: 'views/projets.html'
   })
-  .when('/addProjet', {
-    controller: 'addProjetCtrl',
-    templateUrl: 'views/addProjet.html'
-  })
    .otherwise({
     redirectTo: '/'
   });

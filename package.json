@@ -1,9 +1,9 @@
 {
-  "name": "econom",
+  "name": "epargnator",
   "private": true,
   "version": "0.0.0",
   "description": "Application AngularJS afin d'économiser pour des projets.",
-  "repository": "https://github.com/justinecomment/econom.git",
+  "repository": "https://github.com/justinecomment/Epargnator-IHM.git",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.7.7",

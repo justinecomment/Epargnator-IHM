@@ -1,4 +1,4 @@
-# Econom?
+# Epargnator?
 C'est un projet AngularJS.
 
 # C'est pour quoi ?
