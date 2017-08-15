@@ -23,8 +23,9 @@ html, body {
 
 .card{
     margin: 0 auto;
-    width: 700px;
+    width: 800px;
 }
+
 .paragraph .text-field{
     width: 200px;
     display: inline-block;
@@ -56,4 +57,9 @@ table td{
 
 .card div:not(.card__actions){
   display: inline-block !important;
+}
+
+.addComposantBtn{
+    margin-top:50px !important;
+    margin-left: 20px !important;
 }

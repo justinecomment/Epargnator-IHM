@@ -7,10 +7,11 @@ myApp.controller('addProjetCtrl', function($scope, LxNotificationService) {
             
             var dataProjet = {
                 'name': document.getElementById("nomProjet").value,
-                'dateLimite': this.vm.datePicker.input.date,
+                'dateLimite': document.getElementById("date").value,
                 'composant_1': { 
                     "name" : document.getElementById("nomComposant").value,
-                    'montant': document.getElementById("idMontant").value
+                    'montant': document.getElementById("idMontant").value,
+                    'importance': document.getElementById("Importance").value
                 }
             };
             if(document.getElementById("nomComposant").value != "" && document.getElementById("idMontant").value != "" ){
