@@ -1,14 +1,16 @@
 <div class="content">
     <a href="#/add/projet">
-        <lx-button lx-type="fab" type="submit" lx-size="l">
+        <lx-button lx-type="fab" type="submit" lx-size="xl" lx-tooltip="Ajouter un Projet" lx-tooltip-position="bottom" style="margin-bottom:80px;">
                 <i class="mdi mdi-plus"></i>
         </lx-button>
     </a>
 
+    <h2>Mes projets</h2>
+
     <div class="p+" ng-repeat="listeProjet in listeProjets">
-        <div class="card">
+        <div class="card" style="width: 300px">
             <div class="p+">
-                <strong class="fs-headline display-block">{{listeProjet.projet}}</strong>
+                <strong class="fs-headline display-block">{{listeProjet.name}}</strong>
                 <div>{{listeProjet.composant_1.name}}</div>
                 <div>{{listeProjet.composant_1.montant}}</div>
             </div>

@@ -1,27 +1,26 @@
 <div class="content">
     <h1>Ajouter un Projet</h1>
 
-
-    <div class="p+">
-        <div class="card">
-            <div class="p+">
-                <form name="addProjetForm" ng-submit="submitAddProjet()" novalidate>
+    <form name="addProjetForm" ng-submit="submitAddProjet()" novalidate>
+        <div class="p+">
+            <div class="card">
+                <div class="p+">
                     <div class="textField">
                         <lx-text-field
-                             lx-label="Nom de mon Projet" 
-                             lx-focus="true" 
-                             lx-error="addProjetForm.$submitted && addProjetForm.nomProjet.$pristine && addProjetForm.nomProjet.$error.required">
+                                lx-label="Nom de mon Projet" 
+                                lx-focus="true" 
+                                lx-error="addProjetForm.$submitted && addProjetForm.nomProjet.$pristine && addProjetForm.nomProjet.$error.required">
                                 <input type="text" ng-model="nomProjet" id="nomProjet" name="nomProjet" required />
                         </lx-text-field>
                         <span class="text-field-error" ng-if="addProjetForm.$submitted" ng-show="addProjetForm.nomProjet.$pristine && addProjetForm.nomProjet.$error.required">Le Nom est requis</span><br>
                         
                         <lx-date-picker ng-model="vm.datePicker.input.date"
-                                lx-input-format="DD/MM/YYYY"
+                                lx-input-format="YYYY/MM/DD"
                                 lx-locale="{{ vm.locale }}"
                                 id="datePicker">
                             <lx-text-field 
                                 lx-allow-clear="true" 
-                                lx-label="Choisissez une date"  
+                                lx-label="Date de mon projet"  
                                 lx-error="addProjetForm.$submitted && addProjetForm.datePicker.$pristine && addProjetForm.datePicker.$error.required ">
                                     <input type="text" ng-model="vm.datePicker.input.dateFormatted" id="date" name="datePicker" required>
                             </lx-text-field>
@@ -32,7 +31,7 @@
                             ng-show="addProjetForm.datePicker.$pristine && addProjetForm.datePicker.$error.required">La date est requise
                         </span><br>
                     </div>
-                        
+                            
                     <div class="paragraph fs-body-1">
                         <lx-text-field 
                             lx-label="Nom de mon composant" 
@@ -54,8 +53,9 @@
                             </select>
                         </div>
 
-                         <lx-button
-                            type="submit"
+                            <lx-button
+                            ng-click="onClickAddComposant()"
+                            lx-color="blue"
                             lx-type="fab" 
                             lx-size="l"  
                             class="addComposantBtn" 
@@ -68,27 +68,32 @@
                         <span class="text-field-error" ng-show="addProjetForm.montantComposant.$dirty&&addProjetForm.montantComposant.$error.pattern" class="error">Only Numbers.</span>
                         <span class="text-field-error" ng-if="addProjetForm.$submitted" ng-show="addProjetForm.montantComposant.$pristine&&addProjetForm.montantComposant.$error.required">Le Montant du Composant est requis.</span>
                     </div>
-                </form>
-
-                <div class="listeComposant">
-                    <table>
-                        <tr>
-                            <th style="width: 250px"></th>
-                            <th style="width: 250px"></th> 
-                            <th></th> 
-                        </tr>
-                        <tr ng-repeat="listeProjet in listeProjets">
-                            <td>{{listeProjet.composant_1.name}}</td>
-                            <td>{{listeProjet.composant_1.montant}}</td> 
-                            <td> 
-                                <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
-                            </td> 
-                        </tr>
-                    </table>
+                
+                    <div class="listeComposant">
+                        <table>
+                            <tr>
+                                <th style="width: 250px"></th>
+                                <th style="width: 250px"></th> 
+                                <th style="width: 250px"></th> 
+                                <th></th> 
+                            </tr>
+                            <tr ng-repeat="listeProjet in listeProjets">
+                                <td>Nom : {{listeProjet.composant_1.name}}</td>
+                                <td>Montant: {{listeProjet.composant_1.montant}}</td> 
+                                <td>Importance: {{listeProjet.composant_1.importance}}</td> 
+                                <td> 
+                                    <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                </td> 
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-
             </div>
         </div>
-    </div>
 
+        <lx-button lx-color="green" type="submit">SAVE</lx-button>
+        <a href="#/projets">
+            <lx-button lx-color="white">Cancel</lx-button>
+        </a>
+    </form>
 </div>

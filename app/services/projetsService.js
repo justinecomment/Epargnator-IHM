@@ -3,8 +3,8 @@ myApp.service('projetsService', function($http){
 var tableau = 
 [
     {   
-        "projet":"Bali", 
-        "date":"30/08/2018", 
+        "name":"Bali", 
+        "dateLimite":"2018-08-30", 
         "composant_1": {
             "name" : "vol",
             "montant" : "3000",
@@ -12,8 +12,8 @@ var tableau =
         }
     },
     {   
-        "projet":"Maison", 
-        "date":"20/06/2020", 
+        "name":"Maison", 
+        "dateLimite":"2018-08-17", 
         "composant_1": {
             "name" : "toit" ,
             "montant" : "200000",
@@ -26,5 +26,17 @@ var tableau =
    this.getProjets = function(){
        return tableau;
    };
+
+   this.postProjet = function(){
+       return $http({
+            method : 'POST',
+            url : 'http://192.168.1.13:8080/epargnator-0.1/ws/projet',
+            dataType: 'json',
+            data : tableau,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+   }
 
 })
