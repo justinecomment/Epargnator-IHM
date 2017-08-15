@@ -1,50 +1,16 @@
 <div class="content">
-    <p>Ajouter un Projet</p>
-
-     <form name="addProjetForm" ng-submit="submitAddProjet()" novalidate>
-       <div class="textField">
-            <lx-text-field lx-label="Nom" lx-focus="true">
-                <input type="text" ng-model="nom" id="nom" name="nom" required>
-            </lx-text-field>
-            <span ng-if="addProjetForm.$submitted" ng-show="addProjetForm.nom.$pristine || addProjetForm.nom.$error.required" class="error">Le Nom est requis</span><br>
-            
-            <lx-date-picker ng-model="vm.datePicker.input.date"
-                    lx-input-format="LL"
-                    lx-locale="{{ vm.locale }}"
-                    id="datePicker">
-                <lx-text-field lx-allow-clear="true" lx-label="Choisissez une date">
-                    <input type="text" ng-model="vm.datePicker.input.dateFormatted" name="datePicker" required>
-                </lx-text-field>
-            </lx-date-picker>
-            <span ng-if="addProjetForm.$submitted" ng-show="addProjetForm.datePicker.$pristine || addProjetForm.datePicker.$error.required" class="error">La date est requise</span><br>
-       </div>
-        
+    <a href="#/add/projet">
         <lx-button lx-type="fab" type="submit" lx-size="l">
-            <i class="mdi mdi-plus"></i>
+                <i class="mdi mdi-plus"></i>
         </lx-button>
-    </form>
-
+    </a>
 
     <div class="p+" ng-repeat="listeProjet in listeProjets">
         <div class="card">
             <div class="p+">
                 <strong class="fs-headline display-block">{{listeProjet.projet}}</strong>
-                
-                <form name="composantForm" ng-submit="onClickAddComposant()">
-                    <div class="paragraph fs-body-1 mt+">
-                    <input type="text" ng-model="nomComposant" id="idComposant" placeholder="Nom de mon composant"/>
-                    <input type="text" ng-model="montant" id="idMontant" placeholder="Montant"/>
-            
-                    <lx-button lx-type="icon" type="submit" lx-size="l">
-                        <i class="mdi mdi-plus"></i>
-                    </lx-button>
-                </form>
-
-                <div ng-repeat="myComposant in listeComposants">
-                    <input type="text" value={{myComposant.nomComposant}} />
-                    <input type="text" value={{myComposant.montant}} />
-                    <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
-                </div>
+                <div>{{listeProjet.composant_1.name}}</div>
+                <div>{{listeProjet.composant_1.montant}}</div>
             </div>
     
             <div class="card__actions">
@@ -53,5 +19,5 @@
             </div>
         </div>
     </div>
-  
+
 </div>

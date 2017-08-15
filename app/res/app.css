@@ -25,11 +25,35 @@ html, body {
     margin: 0 auto;
     width: 700px;
 }
-.paragraph input{
-    margin: 0 auto;
-    margin-top: 10px;
+.paragraph .text-field{
+    width: 200px;
+    display: inline-block;
+    margin: 20px;
 }
+
 .fa-plus, .fa-trash-o ,.fa-pencil{
-    padding-left: 30px;
     cursor: pointer;
+}
+
+.text-field-error{
+    display: inline-block !important;
+    margin-right: 50px;
+}
+
+.listeComposant div{
+    display: inline-block !important;
+    margin: 10px;
+}
+
+table{
+    margin: 0 auto !important;
+    width: 500px;
+}
+
+table td{
+    text-align: left;
+}
+
+.card div:not(.card__actions){
+  display: inline-block !important;
 }
