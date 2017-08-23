@@ -7,26 +7,71 @@
                 <div class="p+">
                     <div class="textField">
                         <lx-text-field
-                                lx-label="Nom de mon Ménage" 
+                                lx-label="Nom" 
                                 lx-focus="true" 
                                 lx-error="addMenageForm.$submitted && addMenageForm.nomMenage.$pristine && addMenageForm.nomMenage.$error.required">
                                 <input type="text" ng-model="nomMenage" id="nomMenage" name="nomMenage" required />
                         </lx-text-field>
                         <span class="text-field-error" ng-if="addMenageForm.$submitted" ng-show="addMenageForm.nomMenage.$pristine && addMenageForm.nomMenage.$error.required">Le Nom est requis</span><br>
-
+                        
                         <lx-text-field
-                            lx-label="Montant" 
-                            lx-error="addMenageForm.montantComposant.$dirty && addMenageForm.montantComposant.$error.pattern || addMenageForm.$submitted && addMenageForm.montantComposant.$pristine && addMenageForm.montantComposant.$error.required">
+                            lx-label="Revenu" 
+                            lx-error="addMenageForm.montantComposant.$dirty && addMenageForm.revenu.$error.pattern || addMenageForm.$submitted && addMenageForm.revenu.$pristine && addMenageForm.revenu.$error.required">
                                 <input type="text" ng-model="revenu" id="revenu" name="revenu" ng-pattern="/^[0-9]{1,9}$/" required />
                         </lx-text-field>
-                         <span class="text-field-error" ng-show="addMenageForm.revenu.$dirty && addMenageForm.revenu.$error.pattern || addMenageForm.$submitted && addMenageForm.revenu.$pristine && addMenageForm.revenu.$error.required">Only Numbers</span>
+                    </div>
+                            
+                    <div class="paragraph fs-body-1">
+                        <lx-text-field 
+                            lx-label="Nom de mon composant" 
+                            lx-error="addMenageForm.$submitted && addMenageForm.nomComposant.$pristine && addMenageForm.nomComposant.$error.required">
+                                <input type="text" ng-model="nomComposant" id="nomComposant" name="nomComposant" required />
+                        </lx-text-field>
+
+                        <lx-text-field
+                            lx-label="Montant de mon Composant" 
+                            lx-error="addMenageForm.montantComposant.$dirty && addMenageForm.montantComposant.$error.pattern || addMenageForm.$submitted&&addMenageForm.montantComposant.$pristine&&addMenageForm.montantComposant.$error.required">
+                                <input type="text" ng-model="montantComposant" id="montant" name="montantComposant" ng-pattern="/^[0-9]{1,9}$/" required />
+                        </lx-text-field>
+
+                        <lx-button
+                            ng-click="onClickAddComposant()"
+                            lx-color="blue"
+                            lx-type="fab" 
+                            lx-size="l"  
+                            class="addComposantBtn" 
+                            lx-tooltip="Ajouter un composant" 
+                            lx-tooltip-position="right">
+                                <i class="mdi mdi-plus"></i>
+                        </lx-button></br>
+                        
+                        <span class="text-field-error" ng-if="addMenageForm.$submitted" ng-show="addMenageForm.nomComposant.$pristine && addMenageForm.nomComposant.$error.required">Le Nom du Composant est requis.</span>
+                        <span class="text-field-error" ng-show="addMenageForm.montantComposant.$dirty && addMenageForm.montantComposant.$error.pattern" class="error">Only Numbers.</span>
+                        <span class="text-field-error" ng-if="addMenageForm.$submitted" ng-show="addMenageForm.montantComposant.$pristine && addMenageForm.montantComposant.$error.required">Le Montant du Composant est requis.</span>
+                    </div>
+                
+                    <div class="listeComposant">
+                        <table>
+                            <tr>
+                                <th style="width: 250px"></th>
+                                <th style="width: 250px"></th> 
+                                <th></th> 
+                            </tr>
+                            <tr ng-repeat="listeMenage in listeMenages">
+                                <td>Nom : {{listeMenage.composant_1.name}}</td>
+                                <td>Montant: {{listeMenage.composant_1.montant}}</td> 
+                                <td> 
+                                    <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                </td> 
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
 
         <lx-button lx-color="green" type="submit">SAVE</lx-button>
-        <a href="#/menage">
+        <a href="#/menages">
             <lx-button lx-color="white">Cancel</lx-button>
         </a>
     </form>

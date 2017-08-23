@@ -55,7 +55,7 @@ table td{
     text-align: left;
 }
 
-.card div:not(.card__actions){
+.form-group{
   display: inline-block !important;
 }
 
@@ -66,4 +66,8 @@ table td{
 
 .navbar-default{
     background-color: #83d3de;
+}
+
+#revenu{
+    display: block !important;
 }

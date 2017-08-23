@@ -6,4 +6,18 @@
     </a>
 
     <h2>Ménage</h2>
+
+    <div class="p+" ng-repeat="listeMenage in listeMenages">
+        <div class="card" style="width: 300px">
+            <div class="p+">
+                <strong class="fs-headline display-block">{{listeMenage.name}}</strong>
+                <div>{{listeMenage.revenu}} €</div>
+            </div>
+    
+            <div class="card__actions">
+                <lx-button lx-color="green" lx-type="flat">Save</lx-button>
+                <lx-button lx-color="red" lx-type="flat">Delete</lx-button>
+            </div>
+        </div>
+    </div>
 </div>

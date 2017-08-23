@@ -1,6 +1,6 @@
 myApp.service('projetsService', function($http){
  
-var tableau = 
+var projets = 
 [
     {   
         "name":"Bali", 
@@ -29,12 +29,8 @@ var tableau =
 ]
 
 
-
-
-
-
    this.getProjets = function(){
-       return tableau;
+       return projets;
    };
 
    this.postProjet = function(){

@@ -2,10 +2,7 @@ myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projet
 
     $scope.listeProjets = [];
 
-   
-
     $scope.submitAddProjet = function(){
-        
         if($scope.addProjetForm.$valid === true){
             var dataProjet = {
                 'name': document.getElementById("nomProjet").value,
@@ -47,5 +44,5 @@ myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projet
                 LxNotificationService.notify('Vous devez entrer un Nom et un Montant', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
           }
    };
-   
+
 });
