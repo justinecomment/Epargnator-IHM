@@ -6,11 +6,19 @@ myApp.config(['$routeProvider', function ($routeProvider) {
   })
   .when('/projets', {
     controller: 'projetsCtrl',
-    templateUrl: 'views/projets.html'
+    templateUrl: 'views/projets/projets.html'
   })
    .when('/add/projet', {
     controller: 'addProjetCtrl',
-    templateUrl: 'views/addProjet.html'
+    templateUrl: 'views/projets/addProjet.html'
+  })
+   .when('/menage', {
+    controller: 'menageCtrl',
+    templateUrl: 'views/menage/menage.html'
+  })
+  .when('/add/menage', {
+    controller: 'addMenageCtrl',
+    templateUrl: 'views/menage/addMenage.html'
   })
    .otherwise({
     redirectTo: '/'

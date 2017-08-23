@@ -17,7 +17,6 @@ myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projet
                 }
             };
            console.log(dataProjet)
-          
             //projetsService.postProjet();
         }
         else{

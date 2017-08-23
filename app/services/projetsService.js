@@ -4,12 +4,18 @@ var tableau =
 [
     {   
         "name":"Bali", 
+        "nbrComposants": "2",
         "dateLimite":"2018-08-30", 
         "composant_1": {
             "name" : "vol",
             "montant" : "3000",
             "importance" : "1" 
-        }
+        }, 
+        "composant_2": {
+           "name": "nourriture",
+           "montant": 2000,
+           "importance": 1
+       }
     },
     {   
         "name":"Maison", 
@@ -21,6 +27,10 @@ var tableau =
         }
     }
 ]
+
+
+
+
 
 
    this.getProjets = function(){

@@ -1,0 +1,33 @@
+<div class="content">
+    <h1>Ajouter un Ménage</h1>
+
+    <form name="addMenageForm" ng-submit="addMenage()" novalidate>
+        <div class="p+">
+            <div class="card">
+                <div class="p+">
+                    <div class="textField">
+                        <lx-text-field
+                                lx-label="Nom de mon Ménage" 
+                                lx-focus="true" 
+                                lx-error="addMenageForm.$submitted && addMenageForm.nomMenage.$pristine && addMenageForm.nomMenage.$error.required">
+                                <input type="text" ng-model="nomMenage" id="nomMenage" name="nomMenage" required />
+                        </lx-text-field>
+                        <span class="text-field-error" ng-if="addMenageForm.$submitted" ng-show="addMenageForm.nomMenage.$pristine && addMenageForm.nomMenage.$error.required">Le Nom est requis</span><br>
+
+                        <lx-text-field
+                            lx-label="Montant" 
+                            lx-error="addMenageForm.montantComposant.$dirty && addMenageForm.montantComposant.$error.pattern || addMenageForm.$submitted && addMenageForm.montantComposant.$pristine && addMenageForm.montantComposant.$error.required">
+                                <input type="text" ng-model="revenu" id="revenu" name="revenu" ng-pattern="/^[0-9]{1,9}$/" required />
+                        </lx-text-field>
+                         <span class="text-field-error" ng-show="addMenageForm.revenu.$dirty && addMenageForm.revenu.$error.pattern || addMenageForm.$submitted && addMenageForm.revenu.$pristine && addMenageForm.revenu.$error.required">Only Numbers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <lx-button lx-color="green" type="submit">SAVE</lx-button>
+        <a href="#/menage">
+            <lx-button lx-color="white">Cancel</lx-button>
+        </a>
+    </form>
+</div>
