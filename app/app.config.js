@@ -12,13 +12,13 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     controller: 'addProjetCtrl',
     templateUrl: 'views/projets/addProjet.html'
   })
-   .when('/menage', {
-    controller: 'menageCtrl',
-    templateUrl: 'views/menage/menage.html'
+   .when('/personne', {
+    controller: 'personneCtrl',
+    templateUrl: 'views/personne/personne.html'
   })
-  .when('/add/menage', {
-    controller: 'addMenageCtrl',
-    templateUrl: 'views/menage/addMenage.html'
+  .when('/add/personne', {
+    controller: 'addPersonneCtrl',
+    templateUrl: 'views/personne/addPersonne.html'
   })
    .otherwise({
     redirectTo: '/'

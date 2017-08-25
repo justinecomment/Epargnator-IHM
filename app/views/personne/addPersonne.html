@@ -1,0 +1,78 @@
+<div class="content">
+    <h1>Ajouter une Personne</h1>
+
+    <form name="addPersonneForm" novalidate>
+        <div class="p+">
+            <div class="card">
+                <div class="p+">
+                    <div class="textField">
+                        <lx-text-field
+                                lx-label="Nom" 
+                                lx-focus="true" 
+                                lx-error="addPersonneForm.$submitted && addPersonneForm.nomPersonne.$pristine && addPersonneForm.nomPersonne.$error.required">
+                                <input type="text" ng-model="nomPersonne" id="nomPersonne" name="nomPersonne" required />
+                        </lx-text-field>
+                        <span class="text-field-error" ng-if="addPersonneForm.$submitted" ng-show="addPersonneForm.nomPersonne.$pristine && addPersonneForm.nomPersonne.$error.required">Le Nom est requis</span><br>
+                        
+                        <lx-text-field
+                            lx-label="Revenu" 
+                            lx-error="addPersonneForm.montantComposant.$dirty && addPersonneForm.revenu.$error.pattern || addPersonneForm.$submitted && addPersonneForm.revenu.$pristine && addPersonneForm.revenu.$error.required">
+                                <input type="text" ng-model="revenu" id="revenu" name="revenu" ng-pattern="/^[0-9]{1,9}$/" required />
+                        </lx-text-field>
+                    </div>
+                            
+                    <div class="paragraph fs-body-1">
+                        <lx-text-field 
+                            lx-label="Nom de ma charge" 
+                            lx-error="addPersonneForm.$submitted && addPersonneForm.nomCharge.$pristine && addPersonneForm.nomCharge.$error.required">
+                                <input type="text" ng-model="nomCharge" id="nomCharge" name="nomCharge" required />
+                        </lx-text-field>
+
+                        <lx-text-field
+                            lx-label="Montant de ma charge" 
+                            lx-error="addPersonneForm.montantCharge.$dirty && addPersonneForm.montantCharge.$error.pattern || addPersonneForm.$submitted && addPersonneForm.montantCharge.$pristine && addPersonneForm.montantCharge.$error.required">
+                                <input type="text" ng-model="montantCharge" id="montantCharge" name="montantCharge" ng-pattern="/^[0-9]{1,9}$/" required />
+                        </lx-text-field>
+
+                        <lx-button
+                            ng-click="addCharge()"
+                            lx-color="blue"
+                            lx-type="fab" 
+                            lx-size="l"  
+                            class="addComposantBtn" 
+                            lx-tooltip="Ajouter une charge" 
+                            lx-tooltip-position="right">
+                                <i class="mdi mdi-plus"></i>
+                        </lx-button></br>
+                        
+                        <span class="text-field-error" ng-if="addPersonneForm.$submitted" ng-show="addPersonneForm.nomCharge.$pristine && addPersonneForm.nomCharge.$error.required">Le Nom da la charge est requis.</span>
+                        <span class="text-field-error" ng-show="addPersonneForm.montantCharge.$dirty && addPersonneForm.montantCharge.$error.pattern" class="error">Only Numbers.</span>
+                        <span class="text-field-error" ng-if="addPersonneForm.$submitted" ng-show="addPersonneForm.montantCharge.$pristine && addPersonneForm.montantCharge.$error.required">Le Montant est requis.</span>
+                    </div>
+                
+                    <div class="listeComposant">
+                        <table>
+                            <tr>
+                                <th style="width: 250px"></th>
+                                <th style="width: 250px"></th> 
+                                <th></th> 
+                            </tr>
+                            <tr ng-repeat="charge in charges">
+                                <td>Nom : {{charge.name}}</td>
+                                <td>Montant: {{charge.montant}}</td> 
+                                <td> 
+                                    <i ng-click="onClickDeleteCharge($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                </td> 
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <lx-button lx-color="green" ng-click="addPersonne()">SAVE</lx-button>
+        <a href="#/menages">
+            <lx-button lx-color="white">Cancel</lx-button>
+        </a>
+    </form>
+</div>

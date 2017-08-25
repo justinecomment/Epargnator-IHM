@@ -1,17 +1,17 @@
 <div class="content">
-    <a href="#/add/menage">
-        <lx-button lx-type="fab" type="submit" lx-size="xl" lx-tooltip="Ajouter un Menage" lx-tooltip-position="bottom" style="margin-bottom:80px;">
+    <a href="#/add/personne">
+        <lx-button lx-type="fab" type="submit" lx-size="xl" lx-tooltip="Ajouter une personne" lx-tooltip-position="bottom" style="margin-bottom:80px;">
                 <i class="mdi mdi-plus"></i>
         </lx-button>
     </a>
 
-    <h2>Ménage</h2>
+    <h2>Personne</h2>
 
-    <div class="p+" ng-repeat="listeMenage in listeMenages">
+    <div class="p+" ng-repeat="listePersonne in listePersonnes">
         <div class="card" style="width: 300px">
             <div class="p+">
-                <strong class="fs-headline display-block">{{listeMenage.name}}</strong>
-                <div>{{listeMenage.revenu}} €</div>
+                <strong class="fs-headline display-block">{{listePersonne.name}}</strong>
+                <div>{{listePersonne.revenu}} €</div>
             </div>
     
             <div class="card__actions">
