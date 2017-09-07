@@ -1,5 +1,5 @@
-myApp.controller('personneCtrl', function($scope, personneService) {
+myApp.controller('personneCtrl', function($scope) {
 
-   $scope.listePersonnes = personneService.getPersonne();
+   
    
 });

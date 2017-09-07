@@ -23,6 +23,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
    .otherwise({
     redirectTo: '/'
   });
+
 }]);
 
 
