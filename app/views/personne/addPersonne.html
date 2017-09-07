@@ -53,18 +53,25 @@
                     <div class="listeComposant">
                         <table>
                             <tr>
-                                <th style="width: 250px"></th>
-                                <th style="width: 250px"></th> 
-                                <th></th> 
+                                <th style="width: 150px">Nom</th>
+                                <th style="width: 150px">Charges</th> 
+                                <th style="width: 80px"></th> 
                             </tr>
-                            <tr ng-repeat="charge in charges">
+                            <tr ng-repeat="charge in charges | filter: noCharges">
                                 <td>Nom : {{charge.name}}</td>
                                 <td>Montant: {{charge.montant}}</td> 
                                 <td> 
                                     <i ng-click="onClickDeleteCharge($index)" class="fa fa-trash-o" aria-hidden="true"></i>
                                 </td> 
                             </tr>
+
+                            <tr ng-show="charges.length == 0">
+                                <td>Pas de Charges</td>
+                                <td>0€</td>
+                            </tr>
+
                         </table>
+
                     </div>
                 </div>
             </div>

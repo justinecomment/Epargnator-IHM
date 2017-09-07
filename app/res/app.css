@@ -44,7 +44,30 @@ html, body {
 .listeComposant div{
     display: inline-block !important;
     margin: 10px;
+   
 }
+.listeComposant{
+     width: 65%;
+    margin: 0 auto;
+    
+}
+.listeComposant table{
+    width: 100%;
+    
+}
+
+.listeComposant, .listeComposant th, .listeComposant td{
+    border-collapse: collapse;
+    border-style : solid;
+    border-color: #dcdcdc;
+    border-width: 1px;
+    
+}
+
+.listeComposant td{
+    height: 28px;
+}
+
 
 table{
     margin: 0 auto !important;
