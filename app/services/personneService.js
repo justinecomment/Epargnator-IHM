@@ -18,6 +18,13 @@ myApp.service('personneService', function($http){
         });
     };
 
+    this.getPersonnes = function(){
+        return $http.get(baseUrl + '/personne').success(function(result){
+            JSON.stringify(result);
+            return result;
+        })
+    }
+
 });
 
 

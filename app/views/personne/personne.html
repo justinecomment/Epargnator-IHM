@@ -8,14 +8,18 @@
     <h2>Personne</h2>
 
     <div class="p+" ng-repeat="listePersonne in listePersonnes">
-        <div class="card" style="width: 300px">
+        <div class="card" style="width: 400px">
             <div class="p+">
-                <strong class="fs-headline display-block">{{listePersonne.name}}</strong>
-                <div>{{listePersonne.revenu}} €</div>
+                <strong class="fs-headline display-block titlePersonne">{{listePersonne.name}}</strong>
+                <div class="fs-headline display-block titlePersonneMontant">Revenu : {{listePersonne.revenu}} €</div>
+                <div ng-repeat="charges in listePersonne.chargesPersonne" class="chargesList">
+                    <p>{{charges.name}} : {{charges.montant}}€</p>
+                </div>
+               
             </div>
     
             <div class="card__actions">
-                <lx-button lx-color="green" lx-type="flat">Save</lx-button>
+                <lx-button lx-color="green" lx-type="flat">Edit</lx-button>
                 <lx-button lx-color="red" lx-type="flat">Delete</lx-button>
             </div>
         </div>

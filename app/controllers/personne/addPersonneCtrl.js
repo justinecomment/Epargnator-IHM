@@ -1,4 +1,4 @@
-myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, personneService) {
+myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, personneService, $location) {
     
     $scope.personne = [];
     $scope.charges= [];
@@ -14,8 +14,8 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
             var personneData ={
                   "name"         : document.getElementById("nomPersonne").value,
                   "revenu"       : document.getElementById("revenu").value,
-                  "dateCreation" : "2017-08-08",
-                  "dateMiseAJour": "2017-08-08",
+                  "dateCreation" : "2017-09-06",
+                  "dateMiseAJour": "2017-09-06",
                   "chargesPersonne": chargesIntegrales
              };
 
@@ -23,6 +23,7 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
             $scope.personne.push(personneData);
             personneService.addPersonne(personneData);
             LxNotificationService.notify('Personne enregistrée', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
+            $location.path('/personne');
         }
         else{
             $scope.addPersonneForm.$valid === false;
@@ -51,7 +52,6 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
 
     $scope.onClickDeleteCharge = function(index){
         $scope.charges.splice(index, 1);
-        console.log( $scope.charges)
    }; 
 
    

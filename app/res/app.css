@@ -94,3 +94,15 @@ table td{
 #revenu{
     display: block !important;
 }
+
+.titlePersonne{
+    text-transform: uppercase;
+}
+.titlePersonneMontant{
+    padding-bottom: 13px;
+}
+
+.chargesList{
+    text-align: left;
+    padding-left: 132px;
+}
