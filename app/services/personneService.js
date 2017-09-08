@@ -23,9 +23,22 @@ myApp.service('personneService', function($http){
             JSON.stringify(result);
             return result;
         })
-    }
+    };
+
+    this.deletePersonne = function(personeName){
+        return $http({
+            method  : 'DELETE',
+            url: baseUrl + '/personne/' + personeName,
+            data    : {"name":  personeName },
+            headers : {'Content-Type': 'application/json'}
+        })
+    };
 
 });
+
+
+
+
 
 
 /***  INTERCEPTOR ERROR **/
@@ -36,7 +49,6 @@ myApp.config(['$httpProvider', function($httpProvider) {
 myApp.factory('myHttpInterceptor', function ($q) {
      return {
         responseError: function (response) {
-            console.log(JSON.stringify(response));
 
             if(response.status == 500){
                 console.log("500");
@@ -47,7 +59,7 @@ myApp.factory('myHttpInterceptor', function ($q) {
                  return $q.reject(response);
             }
             else{
-                console.log("autre error, status :," , response.status);
+                console.log("autre error: " , response.status);
                 return $q.reject(response);
             }
        }

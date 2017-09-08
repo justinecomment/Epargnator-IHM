@@ -1,4 +1,4 @@
-html, body {
+html, body{
     height:100%;
 }
 
@@ -6,6 +6,7 @@ html, body {
     padding: 80px 0px;
     text-align:center;
     margin: 0 auto;
+    background-image: linear-gradient(to right, #3685b1, #4BA1C2, #3685b1);
 }
 
 .textField{
@@ -53,7 +54,6 @@ html, body {
 }
 .listeComposant table{
     width: 100%;
-    
 }
 
 .listeComposant, .listeComposant th, .listeComposant td{
@@ -61,13 +61,11 @@ html, body {
     border-style : solid;
     border-color: #dcdcdc;
     border-width: 1px;
-    
 }
 
 .listeComposant td{
     height: 28px;
 }
-
 
 table{
     margin: 0 auto !important;
@@ -88,7 +86,18 @@ table td{
 }
 
 .navbar-default{
-    background-color: #83d3de;
+    background-color: #56b0ca;
+    border-color: #56b0ca;
+}
+
+.navbar{
+    margin-bottom:0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #0a3750;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 #revenu{
@@ -102,7 +111,6 @@ table td{
     padding-bottom: 13px;
 }
 
-.chargesList{
-    text-align: left;
-    padding-left: 132px;
+.card > * {
+   color: #0c4b6f;
 }
