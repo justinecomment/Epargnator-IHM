@@ -6,7 +6,7 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
 
    $scope.addPersonne = function(){
         if($scope.addPersonneForm.$valid === true){
-            for (var index= 0 ; index<$scope.charges.length ; index++){
+            for (var index= 0 ; index < $scope.charges.length ; index++){
                 var chargeComplete =  {name : $scope.charges[index].name , montant: $scope.charges[index].montant} ;
                 chargesIntegrales.push(chargeComplete);
             };
@@ -22,6 +22,7 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
             personneData.chargesPersonne = $scope.charges;
             $scope.personne.push(personneData);
             personneService.addPersonne(personneData);
+            personneService.getPersonnes();
             LxNotificationService.notify('Personne enregistrée', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
             $location.path('/personne');
         }

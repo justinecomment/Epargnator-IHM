@@ -20,10 +20,13 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     controller: 'addPersonneCtrl',
     templateUrl: 'views/personne/addPersonne.html'
   })
+  .when('/edit/personne', {
+    controller: 'editPersonneCtrl',
+    templateUrl: 'views/personne/editPersonne.html'
+  })
    .otherwise({
     redirectTo: '/'
   });
 
 }]);
-
 

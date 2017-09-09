@@ -3,6 +3,15 @@ myApp.service('personneService', function($http){
     var baseUrl = 'http://192.168.1.13:8080/epargnator-0.1/ws';
     var charges = [];
     var nbrCharges = null;
+    var personneSaved;
+
+    this.savePersonne = function(personne){
+        return personneSaved = personne;
+    };
+
+    this.getPersonneSaved = function(){
+        return personneSaved;
+    }
 
 
 
@@ -25,12 +34,24 @@ myApp.service('personneService', function($http){
         })
     };
 
-    this.deletePersonne = function(personeName){
+    this.deletePersonne = function(personneId){
         return $http({
             method  : 'DELETE',
-            url: baseUrl + '/personne/' + personeName,
-            data    : {"name":  personeName },
+            url: baseUrl + '/personne/' + personneId,
+            data    : {"id":  personneId },
             headers : {'Content-Type': 'application/json'}
+        })
+    };
+
+     this.editPersonne= function(personneData){
+         return $http({
+            method : 'PUT',
+            url : baseUrl + '/personne',
+            dataType: 'json',
+            data : personneData,
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
     };
 

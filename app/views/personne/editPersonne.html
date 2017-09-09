@@ -1,0 +1,85 @@
+<div class="content">
+    <h1>Editer une Personne</h1>
+
+    <form name="editPersonneForm" novalidate>
+        <div class="p+">
+            <div class="card">
+                <div class="p+">
+                    <div class="textField">
+                        <lx-text-field
+                                lx-label="Nom" 
+                                lx-focus="true" 
+                                lx-error="editPersonneForm.$submitted && editPersonneForm.nomPersonne.$pristine && editPersonneForm.nomPersonne.$error.required">
+                                <input type="text" ng-model="personneSaved.name" id="nomPersonne" name="nomPersonne" required />
+                        </lx-text-field>
+                        <span class="text-field-error" ng-if="editPersonneForm.$submitted" ng-show="editPersonneForm.nomPersonne.$pristine && editPersonneForm.nomPersonne.$error.required">Le Nom est requis</span><br>
+                        
+                        <lx-text-field
+                            lx-label="Revenu" 
+                            lx-error="editPersonneForm.$submitted && editPersonneForm.revenu.$dirty && editPersonneForm.revenu.$error.pattern">
+                                <input type="text" ng-model="personneSaved.revenu" id="revenu" name="revenu" ng-pattern="/^[0-9]{1,9}$/" required />
+                        </lx-text-field>
+                        <span class="text-field-error" ng-show="editPersonneForm.$submitted && editPersonneForm.revenu.$dirty && editPersonneForm.revenu.$error.pattern" class="error">Only Numbers.</span>
+
+                    </div>
+                            
+                    <div class="paragraph fs-body-1">
+                        <lx-text-field 
+                            lx-label="Nom de ma charge" 
+                            <!--lx-error="editPersonneForm.$submitted && editPersonneForm.nomCharge.$pristine && editPersonneForm.nomCharge.$error.required">
+                                <input type="text" ng-model="nomCharge" id="nomCharge" name="nomCharge"/>
+                        </lx-text-field>
+
+                        <lx-text-field
+                            lx-label="Montant de ma charge" 
+                            lx-error="editPersonneForm.montantCharge.$dirty && editPersonneForm.montantCharge.$error.pattern || editPersonneForm.$submitted && editPersonneForm.montantCharge.$pristine && editPersonneForm.montantCharge.$error.required">
+                                <input type="text" ng-model="montantCharge" id="montantCharge" name="montantCharge" ng-pattern="/^[0-9]{1,9}$/"/>
+                        </lx-text-field>
+
+                        <lx-button
+                            ng-click="addCharge()"
+                            lx-color="blue"
+                            lx-type="fab" 
+                            lx-size="l"  
+                            class="addComposantBtn" 
+                            lx-tooltip="Ajouter une charge" 
+                            lx-tooltip-position="right">
+                                <i class="mdi mdi-plus"></i>
+                        </lx-button></br>
+                        
+                        <span class="text-field-error" ng-show="editPersonneForm.montantCharge.$dirty && editPersonneForm.montantCharge.$error.pattern" class="error">Only Numbers.</span>
+                    </div>
+                
+                    <div class="listeComposant">
+                        <table>
+                            <tr>
+                                <th style="width: 150px">Nom</th>
+                                <th style="width: 150px">Charges</th> 
+                                <th style="width: 80px"></th> 
+                            </tr>
+                            <tr ng-repeat="charge in personneSaved.chargesPersonne | filter: noCharges ">
+                                <td>Nom : {{charge.name}}</td>
+                                <td>Montant: {{charge.montant}}</td> 
+                                <td> 
+                                    <i ng-click="deleteCharge($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                </td> 
+                            </tr>
+
+                            <tr ng-show="personneSaved.chargesPersonne.length == 0" ng-model="noCharges">
+                                <td>Pas de Charges</td>
+                                <td>0€</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <lx-button lx-color="green" ng-click="editPersonne()">EDIT</lx-button>
+        <a href="#/personne">
+            <lx-button lx-color="white">Cancel</lx-button>
+        </a>
+    </form>
+</div>

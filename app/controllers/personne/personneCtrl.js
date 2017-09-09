@@ -7,9 +7,9 @@ myApp.controller('personneCtrl', function($scope, personneService, LxNotificatio
    });
 
    $scope.deletePersonne = function(){
-       var personneName = this.listePersonne.name;
+       var personneId = this.listePersonne.id;
        
-       LxNotificationService.confirm('', 'Voulez-vous vraiment supprimer ' + personneName + ' ?',
+       LxNotificationService.confirm('', 'Voulez-vous vraiment supprimer ' + this.listePersonne.name + ' ?',
                 {
                    cancel: 'Supprimer',
                    ok    : 'Cancel'
@@ -18,7 +18,7 @@ myApp.controller('personneCtrl', function($scope, personneService, LxNotificatio
                         $location.path('/personne');
                     }
                     else{
-                        personneService.deletePersonne(personneName).then(function(result){
+                        personneService.deletePersonne(personneId).then(function(result){
                             personneService.getPersonnes().then(function(result){
                                   $scope.listePersonnes = result.data;
                                  
@@ -28,6 +28,11 @@ myApp.controller('personneCtrl', function($scope, personneService, LxNotificatio
                          LxNotificationService.success('Personne supprimée');
                     }
         });
+   };
+
+   $scope.editPersonne = function(){
+       personneService.savePersonne(this.listePersonne);
+       $location.path('/edit/personne');
    }
    
 });
