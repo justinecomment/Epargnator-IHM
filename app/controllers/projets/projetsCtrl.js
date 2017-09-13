@@ -1,4 +1,10 @@
 myApp.controller('projetsCtrl', function($scope, projetsService) {
     
-    $scope.listeProjets = projetsService.getProjets();
+
+    projetsService.getProjets().then(function(result){
+        $scope.listeProjets = result.data;
+        console.log($scope.listeProjets);
+    });
+
+    
 });

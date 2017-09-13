@@ -21,9 +21,7 @@ myApp.controller('personneCtrl', function($scope, personneService, LxNotificatio
                         personneService.deletePersonne(personneId).then(function(result){
                             personneService.getPersonnes().then(function(result){
                                   $scope.listePersonnes = result.data;
-                                 
                              });
-                          
                         });
                          LxNotificationService.success('Personne supprimée');
                     }

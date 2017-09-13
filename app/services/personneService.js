@@ -13,8 +13,6 @@ myApp.service('personneService', function($http){
         return personneSaved;
     }
 
-
-
     this.addPersonne = function(dataToPost){
         return $http({ 
             method: 'POST', 
@@ -43,7 +41,7 @@ myApp.service('personneService', function($http){
         })
     };
 
-     this.editPersonne= function(personneData){
+    this.editPersonne= function(personneData){
          return $http({
             method : 'PUT',
             url : baseUrl + '/personne',

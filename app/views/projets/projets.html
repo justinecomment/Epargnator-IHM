@@ -10,9 +10,10 @@
     <div class="p+" ng-repeat="listeProjet in listeProjets">
         <div class="card" style="width: 300px">
             <div class="p+">
-                <strong class="fs-headline display-block">{{listeProjet.name}}</strong>
-                <div>{{listeProjet.composant_1.name}}</div>
-                <div>{{listeProjet.composant_1.montant}}</div>
+                <strong class="fs-headline ">{{listeProjet.name}}</strong>
+                <div>{{listeProjet.c1.name}}</div>
+                <div>{{listeProjet.c1.montant}}</div>
+                <div>{{listeProjet.c1.importance}}</div>
             </div>
     
             <div class="card__actions">

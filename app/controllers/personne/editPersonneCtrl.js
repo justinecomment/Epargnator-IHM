@@ -5,16 +5,16 @@ myApp.controller('editPersonneCtrl', function($scope, personneService, LxNotific
     var chargesIntegrales = [];
     $scope.personne = [];
 
+
     $scope.addCharge = function(){
         if(document.getElementById("nomCharge").value != "" && document.getElementById("montantCharge").value != "" ){
             $scope.chargeData ={
-                "name": document.getElementById("nomCharge").value , 
-                "montant":  document.getElementById("montantCharge").value 
+                "id": $scope.charges.length + 1, 
+                "name": document.getElementById("nomCharge").value, 
+                "montant": document.getElementById("montantCharge").value
             };
 
             $scope.charges.push($scope.chargeData);
-            console.log($scope.charges)
-            
             $('#nomCharge').val('');
             $('#montantCharge').val('');
         }
@@ -33,31 +33,32 @@ myApp.controller('editPersonneCtrl', function($scope, personneService, LxNotific
         if($scope.editPersonneForm.$valid === true){
             for (var index= 0 ; index < $scope.charges.length ; index++){
                 var chargeComplete ={
-                    id:$scope.charges[index].id ,
-                    name : $scope.charges[index].name , 
+                    id : $scope.charges[index].id, 
+                    name : $scope.charges[index].name, 
                     montant: $scope.charges[index].montant
                 };
                 chargesIntegrales.push(chargeComplete);
             };
 
-
-             var personneData ={
+            var personneData ={
                   "id": $scope.personneSaved.id,
                   "name"         : document.getElementById("nomPersonne").value,
                   "revenu"       : document.getElementById("revenu").value,
                   "chargesPersonne": chargesIntegrales
              };
+             personneData.chargesPersonne = $scope.charges;
              $scope.personne.push(personneData);
 
              personneService.editPersonne(personneData).then(function(result){
                  personneService.getPersonnes().then(function(result){
                     $scope.listePersonnes = result.data;
                     $location.path('/personne');
+                    LxNotificationService.notify('Personne modifiée', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
                  });
              })
-             
-        }
-   };
+
+          }
+    };
 
 
 });
