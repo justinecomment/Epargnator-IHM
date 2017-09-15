@@ -1,48 +1,61 @@
-myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projetsService) {
+myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projetsService, $location) {
 
     $scope.listeProjets = [];
+    $scope.composants = [];
+    var allComposants = [];
 
-    $scope.submitAddProjet = function(){
+    $scope.addProjet = function(){
         if($scope.addProjetForm.$valid === true){
-            var dataProjet = {
-                'name': document.getElementById("nomProjet").value,
-                'dateLimite': document.getElementById("date").value,
-                'composant_1': { 
-                    "name" : $scope.dataComposant.composant_1.name,
-                    'montant': $scope.dataComposant.composant_1.montant,
-                    'importance': $scope.dataComposant.composant_1.importance
-                }
-            };
-           console.log(dataProjet)
-            //projetsService.postProjet();
+             for(var index= 0 ; index < $scope.composants.length ; index++){
+                var composantsProjet ={
+                    name : $scope.composants[index].name,
+                    montant: $scope.composants[index].montant,
+                    importance: $scope.composants[index].importance,
+                };
+                allComposants.push(composantsProjet);
+             };
+
+            var personneData = {
+                "name":  document.getElementById("nomProjet").value,
+                "dateLimite": 1502150400000,
+                "composantsProjet": allComposants
+            }
+
+            personneData.composantsProjet = $scope.composants;
+            $scope.listeProjets.push(personneData);
+
+            projetsService.addProjet(personneData).then(function(result){
+                 projetsService.getProjets().then(function(result){
+                    $scope.listeProjets = result.data;
+                    $location.path('/projet');
+                    LxNotificationService.notify('Projet ajoutée', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
+                 });
+             })
         }
         else{
             $scope.addProjetForm.$valid === false;
-            console.log('error')
         }
    };
 
-   $scope.onClickDeleteComposant = function(index){
-        $scope.listeProjets.splice(index, 1);
+   $scope.deleteComposant = function(index){
+        $scope.composants.splice(index, 1);
    }; 
 
-   $scope.onClickAddComposant = function(){
-        $scope.dataComposant = {
-            'composant_1': { 
+   $scope.addComposant = function(){
+        if(document.getElementById("nomComposant").value != "" && document.getElementById("idMontant").value != "" ){
+            $scope.composantData ={
                 "name" : document.getElementById("nomComposant").value,
-                'montant': document.getElementById("idMontant").value,
-                'importance': document.getElementById("Importance").value
-            }
-         };
-        
-         if(document.getElementById("nomComposant").value != "" && document.getElementById("idMontant").value != "" ){
-                $scope.listeProjets.push( $scope.dataComposant);
-                $('#nomComposant').val('');
-                $('#idMontant').val('');
-          }
-          else{
-                LxNotificationService.notify('Vous devez entrer un Nom et un Montant', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
-          }
+                "montant" : document.getElementById("idMontant").value,
+                "importance" : document.getElementById("Importance").value
+            };
+            $scope.composants.push($scope.composantData);
+            $('#nomComposant').val('');
+            $('#idMontant').val('');
+            $('#Importance').val('Importance');
+        }
+        else{
+            LxNotificationService.notify('Vous devez entrer un Nom et un Montant', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
+        }
    };
 
 });

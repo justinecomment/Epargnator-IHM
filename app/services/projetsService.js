@@ -10,16 +10,16 @@ myApp.service('projetsService', function($http){
       });
    };
 
-//    this.postProjet = function(){
-//        return $http({
-//             method : 'POST',
-//             url : 'http://192.168.1.13:8080/epargnator-0.1/ws/projet',
-//             dataType: 'json',
-//             data : tableau,
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         })
-//    }
+   this.addProjet = function(dataProjet){
+       return $http({
+            method : 'POST',
+            url : baseUrl + '/projet',
+            dataType: 'json',
+            data : dataProjet,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+   }
 
 })

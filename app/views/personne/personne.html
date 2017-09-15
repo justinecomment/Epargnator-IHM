@@ -12,19 +12,16 @@
             <div class="p+">
                 <strong class="fs-headline display-block titlePersonne">{{listePersonne.name}}</strong>
                 <div class="fs-headline display-block titlePersonneMontant">{{listePersonne.revenu}} €</div>
-               
-                    <table style="width:355px">
-                        <tr>
-                            <th>Charges</th>
-                            <th></th>
-                        </tr>
-                        <tr ng-repeat="charges in listePersonne.chargesPersonne">
-                            <td style="width: 20px">{{charges.name}} :</td>
-                            <td style="width: 20px">{{charges.montant}}€ </td>
-                        </tr>
-
-                    </table>
-               
+                <table style="width:355px">
+                    <tr>
+                        <th>Charges</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="charges in listePersonne.chargesPersonne">
+                        <td style="width: 20px">{{charges.name}} :</td>
+                        <td style="width: 20px">{{charges.montant}}€ </td>
+                    </tr>
+                </table>
             </div>
     
             <div class="card__actions">

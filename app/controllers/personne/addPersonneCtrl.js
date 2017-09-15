@@ -9,7 +9,8 @@ myApp.controller('addPersonneCtrl', function($scope, LxNotificationService, pers
             for (var index= 0 ; index < $scope.charges.length ; index++){
                 var chargeComplete ={
                     name : $scope.charges[index].name,
-                    montant: $scope.charges[index].montant} ;
+                    montant: $scope.charges[index].montant
+                };
                 chargesIntegrales.push(chargeComplete);
             };
            

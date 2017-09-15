@@ -1,7 +1,7 @@
 <div class="content">
     <h1>Ajouter un Projet</h1>
 
-    <form name="addProjetForm" ng-submit="submitAddProjet()" novalidate>
+    <form name="addProjetForm" novalidate>
         <div class="p+">
             <div class="card">
                 <div class="p+">
@@ -54,7 +54,7 @@
                         </div>
 
                             <lx-button
-                            ng-click="onClickAddComposant()"
+                            ng-click="addComposant()"
                             lx-color="blue"
                             lx-type="fab" 
                             lx-size="l"  
@@ -72,18 +72,20 @@
                     <div class="listeComposant">
                         <table>
                             <tr>
-                                <th style="width: 250px"></th>
-                                <th style="width: 250px"></th> 
-                                <th style="width: 250px"></th> 
+                                <th style="width: 250px">Composants</th>
                                 <th></th> 
                             </tr>
-                            <tr ng-repeat="listeProjet in listeProjets">
-                                <td>Nom : {{listeProjet.composant_1.name}}</td>
-                                <td>Montant: {{listeProjet.composant_1.montant}}</td> 
-                                <td>Importance: {{listeProjet.composant_1.importance}}</td> 
+                            <tr ng-repeat="composant in composants | filter: noComposants">
+                                <td>Nom : {{composant.name}}</td>
+                                <td>Montant: {{composant.montant}}</td> 
+                                <td>Importance: {{composant.importance}}</td> 
                                 <td> 
-                                    <i ng-click="onClickDeleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                    <i ng-click="deleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
                                 </td> 
+                            </tr>
+                            <tr ng-show="composants.length == 0">
+                                <td>Pas de Composants</td>
+                                <td>0€</td>
                             </tr>
                         </table>
                     </div>
@@ -91,7 +93,7 @@
             </div>
         </div>
 
-        <lx-button lx-color="green" type="submit">SAVE</lx-button>
+        <lx-button lx-color="green" ng-click="addProjet()">SAVE</lx-button>
         <a href="#/projets">
             <lx-button lx-color="white">Cancel</lx-button>
         </a>
