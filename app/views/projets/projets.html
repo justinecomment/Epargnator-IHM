@@ -15,7 +15,8 @@
                     <table style="width:250px">
                         <tr>
                             <th>Composants</th>
-                            <th></th>
+                            <th>Montant</th>
+                            <th>Importance</th>
                         </tr>
                         <tr ng-repeat="composant in listeProjet.composantsProjet">
                             <td style="width: 20px">{{composant.name}} :</td>
@@ -26,7 +27,7 @@
                 </div>
         
                 <div class="card__actions">
-                    <lx-button lx-color="green" lx-type="flat">Edit</lx-button>
+                    <lx-button ng-click="editProjet()" lx-color="green" lx-type="flat">Edit</lx-button>
                     <lx-button ng-click="deleteProjet()" lx-color="red" lx-type="flat">Delete</lx-button>
                 </div>
             </div>

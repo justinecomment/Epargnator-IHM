@@ -12,6 +12,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     controller: 'addProjetCtrl',
     templateUrl: 'views/projets/addProjet.html'
   })
+  .when('/edit/projet', {
+    controller: 'editProjetCtrl',
+    templateUrl: 'views/projets/editProjet.html'
+  })
    .when('/personne', {
     controller: 'personneCtrl',
     templateUrl: 'views/personne/personne.html'

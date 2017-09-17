@@ -23,9 +23,14 @@ myApp.controller('projetsCtrl', function($scope, projetsService, LxNotificationS
                                   $scope.listeProjets = result.data;
                              });
                         });
-                         LxNotificationService.success('Projet supprimé');
+                         LxNotificationService.success('Projet' + projetName +  'supprimé');
                     }
         });
+    };
+
+    $scope.editProjet = function(){
+        projetsService.saveProjet( this.listeProjet);
+        $location.path('/edit/projet');
     };
 
 

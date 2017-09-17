@@ -1,7 +1,15 @@
 myApp.service('projetsService', function($http){
 
     var baseUrl = 'http://192.168.1.13:8080/epargnator-0.1/ws/';
+    var projetSaved;
  
+   this.saveProjet = function(projet){
+       return projetSaved = projet;
+   };
+
+   this.getProjetSaved = function(){
+       return projetSaved;
+   };
 
 
    this.getProjets = function(){
@@ -29,6 +37,19 @@ myApp.service('projetsService', function($http){
             data    : {"projetName":  projetName },
             headers : {'Content-Type': 'application/json'}
         })
-   }
+   };
+
+   this.editProjet= function(projetData){
+         return $http({
+            method : 'PUT',
+            url : baseUrl + 'projet/' + projetData.name,
+            dataType: 'json',
+            data : projetData,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    };
+
 
 })

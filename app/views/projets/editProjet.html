@@ -1,0 +1,105 @@
+<div id="background">
+    <div class="content">
+        <h1>Editer un Projet</h1>
+
+        <form name="editProjetForm" novalidate>
+            <div class="p+">
+                <div class="card">
+                    <div class="p+">
+                        <div class="textField">
+                            <lx-text-field
+                                    lx-label="Nom de mon Projet" 
+                                    ng-disabled="true"
+                                    lx-focus="true" 
+                                    lx-error="editProjetForm.$submitted && editProjetForm.nomProjet.$pristine && editProjetForm.nomProjet.$error.required">
+                                    <input type="text" ng-model="projetSaved.name" id="nomProjet" name="nomProjet" required />
+                            </lx-text-field>
+                            <span class="text-field-error" ng-if="editProjetForm.$submitted" ng-show="editProjetForm.nomProjet.$pristine && editProjetForm.nomProjet.$error.required">Le Nom est requis</span><br>
+                            
+                            <lx-date-picker ng-model="vm.datePicker.input.date"
+                                    lx-input-format="YYYY/MM/DD"
+                                    lx-locale="{{ vm.locale }}"
+                                    id="datePicker">
+                                <lx-text-field 
+                                    lx-allow-clear="true" 
+                                    lx-label="Date de mon projet"  
+                                    lx-error="editProjetForm.$submitted && editProjetForm.datePicker.$pristine && editProjetForm.datePicker.$error.required ">
+                                        <input type="text" ng-model="vm.datePicker.input.dateFormatted" id="date" name="datePicker" required>
+                                </lx-text-field>
+                            </lx-date-picker>
+                            <span 
+                                class="text-field-error" 
+                                ng-if="editProjetForm.$submitted"
+                                ng-show="editProjetForm.datePicker.$pristine && editProjetForm.datePicker.$error.required">La date est requise
+                            </span><br>
+                        </div>
+                                
+                        <div class="paragraph fs-body-1">
+                            <lx-text-field 
+                                lx-label="Nom de mon composant" 
+                                lx-error="editProjetForm.$submitted && editProjetForm.nomComposant.$pristine&&editProjetForm.nomComposant.$error.required">
+                                    <input type="text" ng-model="nomComposant" id="nomComposant" name="nomComposant"/>
+                            </lx-text-field>
+
+                            <lx-text-field
+                                lx-label="Montant" 
+                                lx-error="editProjetForm.montantComposant.$dirty && editProjetForm.montantComposant.$error.pattern || editProjetForm.$submitted&&editProjetForm.montantComposant.$pristine&&editProjetForm.montantComposant.$error.required">
+                                    <input type="text" ng-model="montantComposant" id="idMontant" name="montantComposant" ng-pattern="/^[0-9]{1,9}$/"/>
+                            </lx-text-field>
+
+                            <div class="form-group">
+                                <select class="form-control" id="Importance">
+                                    <option selected disabled>Importance</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </div>
+
+                                <lx-button
+                                ng-click="addComposant()"
+                                lx-color="blue"
+                                lx-type="fab" 
+                                lx-size="l"  
+                                class="addComposantBtn" 
+                                lx-tooltip="Ajouter un composant" 
+                                lx-tooltip-position="right">
+                                    <i class="mdi mdi-plus"></i>
+                            </lx-button></br>
+                            
+                            <span class="text-field-error" ng-if="editProjetForm.$submitted" ng-show="editProjetForm.nomComposant.$pristine&&editProjetForm.nomComposant.$error.required">Le Nom du Composant est requis.</span>
+                            <span class="text-field-error" ng-show="editProjetForm.montantComposant.$dirty&&editProjetForm.montantComposant.$error.pattern" class="error">Only Numbers.</span>
+                            <span class="text-field-error" ng-if="editProjetForm.$submitted" ng-show="editProjetForm.montantComposant.$pristine&&editProjetForm.montantComposant.$error.required">Le Montant du Composant est requis.</span>
+                        </div>
+                    
+                        <div class="listeComposant">
+                            <table>
+                                <tr>
+                                    <th style="width: 250px">Composants</th>
+                                    <th>Montant</th> 
+                                    <th>Importance</th> 
+                                </tr>
+                                <tr ng-repeat="composant in projetSaved.composantsProjet | filter: noComposants">
+                                    <td>{{composant.name}}</td>
+                                    <td>{{composant.montant}}</td> 
+                                    <td>{{composant.importance}}</td> 
+                                    <td> 
+                                        <i ng-click="deleteComposant($index)" class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </td> 
+                                </tr>
+                                <tr ng-show="composants.length == 0">
+                                    <td>Pas de Composants</td>
+                                    <td>0€</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <lx-button lx-color="green" ng-click="editProjet()">SAVE</lx-button>
+            <a href="#/projets">
+                <lx-button lx-color="white">Cancel</lx-button>
+            </a>
+        </form>
+    </div>
+</div>
