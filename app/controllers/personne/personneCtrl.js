@@ -1,6 +1,6 @@
 myApp.controller('personneCtrl', function($scope, personneService, LxNotificationService, $location) {
 
-     $scope.listePersonnes = [];
+   $scope.listePersonnes = [];
 
    personneService.getPersonnes().then(function(result){
        $scope.listePersonnes = result.data;

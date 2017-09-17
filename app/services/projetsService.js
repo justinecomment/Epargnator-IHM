@@ -20,6 +20,15 @@ myApp.service('projetsService', function($http){
                 'Content-Type': 'application/json'
             }
         })
+   };
+
+   this.deleteProjet = function(projetName){
+        return $http({
+            method  : 'DELETE',
+            url: baseUrl + '/projet/' + projetName,
+            data    : {"projetName":  projetName },
+            headers : {'Content-Type': 'application/json'}
+        })
    }
 
 })

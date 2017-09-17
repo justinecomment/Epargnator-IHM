@@ -1,70 +1,35 @@
-<div class="content">
-    <a href="#/add/projet">
-        <lx-button lx-type="fab" type="submit" lx-size="xl" lx-tooltip="Ajouter un Projet" lx-tooltip-position="bottom" style="margin-bottom:80px; background-color: rgb(169, 224, 124);">
-                <i class="mdi mdi-plus"></i>
-        </lx-button>
-    </a>
+<div id="background">
+    <div class="content">
+        <a href="#/add/projet">
+            <lx-button lx-type="fab" lx-size="xl" lx-tooltip="Ajouter un Projet" lx-tooltip-position="bottom" style="margin-bottom:80px; background-color: rgb(169, 224, 124);">
+                    <i class="mdi mdi-plus"></i>
+            </lx-button>
+        </a>
 
-    <h3>Mes projets</h3>
+        <h3>Mes projets</h3>
 
-    <div class="p+" ng-repeat="listeProjet in listeProjets">
-        <div class="card" style="width: 300px">
-            <div class="p+">
-                <strong class="fs-headline display-block">{{listeProjet.name}}</strong>
-                <table style="width:250px">
-                    <tr>
-                        <th style="width: 10px">Composants</th>
-                        <th style="width: 20px"></th>
-                        
-                    </tr>
-                    <tr ng-show="listeProjet.c1 != null">
-                        <td style="width: 20px">{{listeProjet.c1.name}} : {{listeProjet.c1.montant}} €</td>
-                        <td style="width: 20px">Importance :
-                            <select>
-                                <option value="1">{{listeProjet.c1.importance}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr ng-if="listeProjet.c2 != null">
-                        <td style="width: 20px">{{listeProjet.c2.name}} : {{listeProjet.c2.montant}} €</td>
-                        <td style="width: 20px">Importance :
-                            <select>
-                                <option value="1">{{listeProjet.c2.importance}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr ng-if="listeProjet.c3 != null">
-                        <td style="width: 20px">{{listeProjet.c3.name}} : {{listeProjet.c3.montant}} €</td>
-                        <td style="width: 20px">Importance :
-                            <select>
-                                <option value="1">{{listeProjet.c3.importance}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr ng-if="listeProjet.c4 != null">
-                        <td style="width: 20px">{{listeProjet.c4.name}} : {{listeProjet.c4.montant}} €</td>
-                        <td style="width: 20px">Importance :
-                            <select>
-                                <option value="1">{{listeProjet.c4.importance}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr ng-if="listeProjet.c5 != null">
-                        <td style="width: 20px">{{listeProjet.c5.name}} : {{listeProjet.c5.montant}} €</td>
-                        <td style="width: 20px">Importance :
-                            <select>
-                                <option value="1">{{listeProjet.c5.importance}}</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-    
-            <div class="card__actions">
-                <lx-button lx-color="green" lx-type="flat">Edit</lx-button>
-                <lx-button lx-color="red" lx-type="flat">Delete</lx-button>
+        <div class="p+" ng-repeat="listeProjet in listeProjets">
+            <div class="card" style="width: 300px">
+                <div class="p+">
+                    <strong class="fs-headline display-block">{{listeProjet.name}}</strong>
+                    <table style="width:250px">
+                        <tr>
+                            <th>Composants</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="composant in listeProjet.composantsProjet">
+                            <td style="width: 20px">{{composant.name}} :</td>
+                            <td style="width: 20px">{{composant.montant}}€ </td>
+                            <td style="width: 20px">{{composant.importance}}</td>
+                        </tr>
+                    </table>
+                </div>
+        
+                <div class="card__actions">
+                    <lx-button lx-color="green" lx-type="flat">Edit</lx-button>
+                    <lx-button ng-click="deleteProjet()" lx-color="red" lx-type="flat">Delete</lx-button>
+                </div>
             </div>
         </div>
     </div>
-
 </div>

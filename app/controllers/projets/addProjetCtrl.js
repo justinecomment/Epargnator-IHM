@@ -27,7 +27,7 @@ myApp.controller('addProjetCtrl', function($scope, LxNotificationService, projet
             projetsService.addProjet(personneData).then(function(result){
                  projetsService.getProjets().then(function(result){
                     $scope.listeProjets = result.data;
-                    $location.path('/projet');
+                    $location.path('/projets');
                     LxNotificationService.notify('Projet ajoutée', undefined, undefined, undefined, undefined, undefined, 2 * 2000);
                  });
              })
